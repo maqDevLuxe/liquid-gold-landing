@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 42 33% 96%;
+    --foreground: 85 25% 12%;
+
+    --card: 40 30% 93%;
+    --card-foreground: 85 25% 12%;
+
+    --popover: 42 33% 96%;
+    --popover-foreground: 85 25% 12%;
+
+    --primary: 85 35% 28%;
+    --primary-foreground: 42 33% 96%;
+
+    --secondary: 40 60% 55%;
+    --secondary-foreground: 85 25% 12%;
+
+    --muted: 40 20% 90%;
+    --muted-foreground: 85 15% 40%;
+
+    --accent: 40 85% 58%;
+    --accent-foreground: 85 25% 12%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 40 20% 85%;
+    --input: 40 20% 85%;
+    --ring: 85 35% 28%;
+
+    --radius: 0.25rem;
+
+    /* Custom brand tokens */
+    --olive: 85 35% 28%;
+    --olive-light: 85 25% 45%;
+    --olive-dark: 85 30% 15%;
+    --honey: 40 85% 58%;
+    --honey-dark: 35 80% 42%;
+    --honey-light: 42 70% 78%;
+    --cream: 42 33% 96%;
+    --cream-dark: 40 25% 88%;
+    --gold: 43 90% 50%;
+    --gold-glow: 40 100% 65%;
+
+    --gradient-gold: linear-gradient(135deg, hsl(40 85% 58%), hsl(43 90% 50%));
+    --gradient-olive: linear-gradient(135deg, hsl(85 35% 28%), hsl(85 25% 45%));
+    --gradient-warm: linear-gradient(180deg, hsl(42 33% 96%), hsl(40 25% 88%));
+    --gradient-hero: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.7) 100%);
+
+    --shadow-soft: 0 4px 20px hsl(40 30% 50% / 0.12);
+    --shadow-gold: 0 8px 32px hsl(40 85% 58% / 0.25);
+    --shadow-elevated: 0 20px 60px hsl(85 25% 12% / 0.1);
+
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Montserrat', system-ui, sans-serif;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-background/60 backdrop-blur-xl border border-border/50;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .glass-hero {
+    background: hsla(42, 33%, 96%, 0.12);
+    backdrop-filter: blur(24px);
+    border: 1px solid hsla(42, 33%, 96%, 0.2);
+  }
+
+  .text-gradient-gold {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-olive {
+    background: var(--gradient-olive);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hover-bottle {
+    @apply transition-all duration-500 ease-out;
+  }
+  .hover-bottle:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 30px hsl(40 85% 58% / 0.4));
+  }
+
+  .section-padding {
+    @apply py-24 md:py-32 px-6 md:px-12 lg:px-20;
+  }
+
+  .section-narrow {
+    @apply max-w-6xl mx-auto;
+  }
+
+  .divider-gold {
+    @apply w-16 h-px mx-auto;
+    background: var(--gradient-gold);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-8 py-3 font-body text-sm font-medium tracking-widest uppercase transition-all duration-300;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+  .btn-primary:hover {
+    background: hsl(var(--olive-light));
+    box-shadow: var(--shadow-gold);
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-8 py-3 font-body text-sm font-medium tracking-widest uppercase border transition-all duration-300;
+    border-color: hsl(var(--primary));
+    color: hsl(var(--primary));
+  }
+  .btn-outline:hover {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-body {
+    font-family: var(--font-body);
+  }
+}
+
+/* Floating olive leaf animation */
+@keyframes float-leaf {
+  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
+  25% { transform: translateY(-20px) rotate(5deg); opacity: 0.8; }
+  50% { transform: translateY(-10px) rotate(-3deg); opacity: 0.7; }
+  75% { transform: translateY(-25px) rotate(8deg); opacity: 0.9; }
+}
+
+@keyframes drip {
+  0%, 100% { transform: translateY(0) scaleY(1); opacity: 0.5; }
+  50% { transform: translateY(30px) scaleY(1.3); opacity: 0.8; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-float-leaf {
+  animation: float-leaf 8s ease-in-out infinite;
+}
+
+.animate-drip {
+  animation: drip 6s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* Smooth scroll override for Lenis */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
